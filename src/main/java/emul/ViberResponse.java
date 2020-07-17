@@ -1,19 +1,37 @@
 package emul;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import org.springframework.web.util.UriComponentsBuilder;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Entity
 class ViberResponse {
 
+    private static Logger logger = LoggerFactory.getLogger(ViberResponse.class);
     private @Id
     @GeneratedValue
     Integer seq;
     private String message_token;
     private Integer matching_template_id;
     private Integer status = 0;
+
+    @Value("${mobicont.http-client.url}")
+    private String url;
+
 
     ViberResponse() {
     }
@@ -55,6 +73,25 @@ class ViberResponse {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+
+
+  /*  public void send () {
+        WebClient client = WebClient.builder()
+                // Указываем базовый URL
+                .baseUrl("http://localhost:8081/viber_status_emul")
+                // Заголовок Content-Type будет добавляться во все запросы
+                .defaultHeader("Content-Type", "application/json")
+                .build();
+        Mono<ViberResponse> personMono = client.post()
+                .body(Mono.just(new ViberResponse("12", 4)), ViberResponse.class)
+                // Отправляем запрос
+                .retrieve()
+                .bodyToMono(ViberResponse.class);
+
+    }
+*/
+
 
     @Override
     public boolean equals(Object o) {

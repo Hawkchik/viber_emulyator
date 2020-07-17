@@ -30,11 +30,12 @@ public class ViberResponseController {
     @PostMapping("/viber")
     ViberResponse newViberResponse(@RequestBody ViberRequest newViberRequest) {
         ViberResponse viberResponse = new ViberResponse();
+        ViberSend viberSend = new ViberSend();
         viberResponse.setSeq(newViberRequest.getSeq());
         viberResponse.setMatching_template_id((int) (Math.random() * (1 + 80000) + 1)); //Случайный шаблон
         viberResponse.setMessage_token(String.valueOf((int) (Math.random() * (1 + 80000) + 1)));//Случайный токен
 
-
+        viberSend.send(viberResponse);
         return viberResponse;
     }
 
