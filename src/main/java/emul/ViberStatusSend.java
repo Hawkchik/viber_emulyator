@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Date;
 
 import static java.lang.Thread.sleep;
 
@@ -17,12 +18,16 @@ public class ViberStatusSend {
 
     private final RestTemplate template = new RestTemplate();
 
-    public void send(ViberResponse viberResponse, String phone) {
+    public void send(ViberResponse viberResponse, String phone, Integer serviceId) {
         ViberStatus viberStatus = new ViberStatus();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://10.241.0.194:9003/viber_status_emul")
+// Тестовый стенд адрес для пуша статуса
+        URI uri = UriComponentsBuilder.fromUriString("http://10.241.0.194:9003/viber_status_new")
                 .build().toUri();
         viberStatus.setMessage_token(viberResponse.getMessage_token());
+        viberStatus.setService_id(serviceId);
+        viberStatus.setPhone_number(phone);
+        Date date1 = new Date();
+        viberStatus.setMessage_time(date1.getTime());
 
         //Доставлено + Прочитано 01
         if (phone.matches("\\d{9}01")) {
@@ -146,6 +151,7 @@ public class ViberStatusSend {
             ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
             String body = response.getBody();
+            logger.info("Delivered by default send");
 
         } catch (Throwable e) {
             logger.error("[{}]. error processing mobicont request for {} ms", e);
