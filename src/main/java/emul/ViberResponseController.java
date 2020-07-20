@@ -34,15 +34,15 @@ public class ViberResponseController extends Thread {
     ViberResponse newViberResponse(@RequestBody ViberRequest newViberRequest) {
         ViberResponse viberResponse = new ViberResponse();
         ViberStatusSend viberStatusSend = new ViberStatusSend();
+        String phone = newViberRequest.getDest();
         viberResponse.setSeq(newViberRequest.getSeq());
         viberResponse.setMatching_template_id((int) (Math.random() * (1 + 80000) + 1)); //Случайный шаблон
         viberResponse.setMessage_token(String.valueOf((int) (Math.random() * (1 + 80000) + 1)));//Случайный токен
 
 
         try {
-            new Thread(() -> viberStatusSend.send(viberResponse)).start();
             logger.info("Begin sending");
-            logger.info("Response sent");
+            new Thread(() -> viberStatusSend.send(viberResponse,phone)).start();
             return viberResponse;
 
         } catch (Exception e) {
