@@ -2,6 +2,7 @@ package emul;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,13 +17,17 @@ import static java.lang.Thread.sleep;
 public class ViberStatusSend {
     private static Logger logger = LoggerFactory.getLogger(ViberStatusSend.class);
 
+    @Value("${viber.config.url}")
+    private String url="http://10.241.0.194:9003/viber_status_new";
+
     private final RestTemplate template = new RestTemplate();
 
     public void send(ViberResponse viberResponse, String phone, Integer serviceId) {
         ViberStatus viberStatus = new ViberStatus();
 // Тестовый стенд адрес для пуша статуса
-        URI uri = UriComponentsBuilder.fromUriString("http://10.241.0.194:9003/viber_status_new")
+        URI uri = UriComponentsBuilder.fromUriString(url)
                 .build().toUri();
+        logger.info("Request begin sending");
         viberStatus.setMessage_token(viberResponse.getMessage_token());
         viberStatus.setService_id(serviceId);
         viberStatus.setPhone_number(phone);
@@ -151,8 +156,7 @@ public class ViberStatusSend {
             ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
             String body = response.getBody();
-            logger.info("Delivered by default send");
-
+            logger.info("Delivered send by default");
         } catch (Throwable e) {
             logger.error("[{}]. error processing mobicont request for {} ms", e);
 
