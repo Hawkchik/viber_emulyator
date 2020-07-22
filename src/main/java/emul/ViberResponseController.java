@@ -115,7 +115,7 @@ public class ViberResponseController extends Thread {
                 viberResponse.setStatus(20);
                 return viberResponse;
             }
-            // SRVC_WAIT _FOR_USER_RESPONSE = 21
+            // SRVC_WAIT_FOR_USER_RESPONSE = 21
             else if (phone.matches("\\d{9}45")) {
                 viberResponse.setStatus(21);
                 return viberResponse;
