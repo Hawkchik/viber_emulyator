@@ -1,0 +1,14 @@
+viber:
+  config:
+    url: "http://10.241.0.194:9003/viber_status_new"
+server:
+  port: 8090
+
+logging:
+  level:
+    org:
+      springframework:
+        web: INFO
+    com: INFO
+
+  file: /Users/ili/application.log

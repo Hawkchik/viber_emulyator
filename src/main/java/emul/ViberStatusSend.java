@@ -18,15 +18,15 @@ import static java.lang.Thread.sleep;
 public class ViberStatusSend {
     private static Logger logger = LoggerFactory.getLogger(ViberStatusSend.class);
 
-    @Value("${viber.config.url}")
-    public String url;
+    @Value ("${viber.config.url}")
+    private String url="http://10.241.0.194:9003/viber_status_new";
 
     private final RestTemplate template = new RestTemplate();
 
     public void send(ViberResponse viberResponse, String phone, Integer serviceId) {
         ViberStatus viberStatus = new ViberStatus();
 // Тестовый стенд адрес для пуша статуса
-        URI uri = UriComponentsBuilder.fromUriString(url)
+        URI uri = UriComponentsBuilder.fromUriString(this.url)
                 .build().toUri();
         logger.info("Request begin sending");
         viberStatus.setMessage_token(viberResponse.getMessage_token());
