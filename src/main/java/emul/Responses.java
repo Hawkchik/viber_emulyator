@@ -16,7 +16,7 @@ class Responses {
 
         return args -> {
             log.info("Preloading " + repository.save(new ViberResponse("123",23)));
-            log.info("Preloading " + repository.save(new ViberResponse("1234",29)));
+            log.info("Preloading " + repository.save(new ViberResponse("1234",30)));
         };
     }
 }
