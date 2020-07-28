@@ -153,7 +153,7 @@ public class ViberStatusSend {
 
 
         try {
-            sleep(30000);
+            sleep(50000);
             ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
             String body = response.getBody();

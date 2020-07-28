@@ -6,9 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
-@PropertySources({
-        @PropertySource("classpath:application.yml")
-})
+
 public class emulApplication {
 
     public static void main(String... args) {

@@ -11,4 +11,4 @@ logging:
         web: INFO
     com: INFO
 
-  file: /Users/ili/application.log
+  file: /var/log/th1/viber_new/log.txt
