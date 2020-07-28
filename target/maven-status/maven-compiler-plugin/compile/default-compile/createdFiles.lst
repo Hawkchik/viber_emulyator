@@ -1,0 +1,9 @@
+emul\ViberStatusSend.class
+emul\ViberResponse.class
+emul\ViberStatus.class
+emul\emulApplication.class
+emul\ViberResponseRepository.class
+emul\Responses.class
+emul\Message.class
+emul\ViberRequest.class
+emul\ViberResponseController.class
