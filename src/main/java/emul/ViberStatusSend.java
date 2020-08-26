@@ -3,7 +3,6 @@ package emul;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,8 +17,8 @@ import static java.lang.Thread.sleep;
 public class ViberStatusSend {
     private static Logger logger = LoggerFactory.getLogger(ViberStatusSend.class);
 
-    @Value ("${viber.config.url}")
-    private String url="http://10.241.0.194:9003/viber_status_new";
+    @Value("${viber.config.url}")
+    private String url = "http://10.241.0.194:9003/viber_status_new";
 
     private final RestTemplate template = new RestTemplate();
 
