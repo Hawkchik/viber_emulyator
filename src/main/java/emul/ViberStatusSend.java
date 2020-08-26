@@ -43,18 +43,18 @@ public class ViberStatusSend {
                 ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
                 String body = response.getBody();
-                logger.info("Deliver sent");
+                logger.info("Изменили статус на 0 = Доставлено");
 
             } catch (Throwable e) {
                 logger.error("[{}]. error processing mobicont request for {} ms", e);
             }
             viberStatus.setMessage_status(1);
-            logger.info("Seen send");
+            logger.info("Изменили статус на 1 = Прочитано");
         }
 // Прочитано 02
         else if (phone.matches("\\d{9}02")) {
             viberStatus.setMessage_status(1);
-            logger.info("Seen send");
+            logger.info("Изменили статус на 1 = Прочитано");
 
         }
 
@@ -62,7 +62,7 @@ public class ViberStatusSend {
 
         else if (phone.matches("\\d{9}03")) {
             viberStatus.setMessage_status(2);
-            logger.info("Expired send");
+            logger.info("Изменили статус на 2 = Просрочено");
 
         }
 
@@ -74,13 +74,13 @@ public class ViberStatusSend {
                 ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
                 String body = response.getBody();
-                logger.info("Expired sent");
+                logger.info("Изменили статус на 2 = Просрочено");
 
             } catch (Throwable e) {
                 logger.error("[{}]. error processing mobicont request for {} ms", e);
             }
             viberStatus.setMessage_status(0);
-            logger.info("Delivered send");
+            logger.info("Изменили статус на 0 = Доставлено");
 
         }
         //Просрочено + Прочитано 05
@@ -91,30 +91,30 @@ public class ViberStatusSend {
                 ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
                 String body = response.getBody();
-                logger.info("Expired sent");
+                logger.info("Изменили статус на 2 = Просрочено");
 
             } catch (Throwable e) {
                 logger.error("[{}]. error processing mobicont request for {} ms", e);
             }
             viberStatus.setMessage_status(1);
-            logger.info("Seen send");
+            logger.info("Изменили статус на 1 = Прочитано");
 
         }
 
-        //Прочитано + просрочено 06
+        //Просрочено + Доставлено 06
         else if (phone.matches("\\d{9}06")) {
             try {
                 viberStatus.setMessage_status(2);
                 ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
                 String body = response.getBody();
-                logger.info("Expired sent");
+                logger.info("Изменили статус на 2 = Просрочено");
 
             } catch (Throwable e) {
                 logger.error("[{}]. error processing mobicont request for {} ms", e);
             }
             viberStatus.setMessage_status(0);
-            logger.info("Delivered send");
+            logger.info("Изменили статус на 0 = Доставлено");
 
         }
 
@@ -127,27 +127,27 @@ public class ViberStatusSend {
                 ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
                 String body = response.getBody();
-                logger.info("Delivered sent");
+                logger.info("Изменили статус на 0 = Доставлено");
 
             } catch (Throwable e) {
                 logger.error("[{}]. error processing mobicont request for {} ms", e);
             }
             viberStatus.setMessage_status(2);
-            logger.info("Expired send");
+            logger.info("Изменили статус на 2 = Просрочено");
 
         }
 // Subscribe
         else if (phone.matches("\\d{9}08")) {
 
             viberStatus.setMessage_status(4);
-            logger.info("Expired send");
+            logger.info("Изменили статус на 4 = Новый тип подписаться");
 
         }
 // Unsubscribe
         else if (phone.matches("\\d{9}09")) {
 
             viberStatus.setMessage_status(5);
-            logger.info("Expired send");
+            logger.info("Изменили статус на 5 = Новый тип отписаться");
 
         } else viberStatus.setMessage_status(0);
 
@@ -157,7 +157,7 @@ public class ViberStatusSend {
             ResponseEntity<String> response = template.postForEntity(uri, viberStatus, String.class);
 
             String body = response.getBody();
-            logger.info("Delivered send by default");
+            logger.info("Сообщение статуса доставки отправлено");
         } catch (Throwable e) {
             logger.error("[{}]. error processing mobicont request for {} ms", e);
 
