@@ -28,6 +28,15 @@ class ViberResponse {
     private String message_token;
     private Integer matching_template_id;
     private Integer status = 0;
+    private Integer session_id=0;
+
+    public Integer getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(Integer session_id) {
+        this.session_id = session_id;
+    }
 
     @Value("${mobicont.http-client.url}")
     private String url;
@@ -112,6 +121,6 @@ class ViberResponse {
 
     @Override
     public String toString() {
-        return "ViberResponse{" + "seq=" + this.seq + ", message_token='" + this.message_token + '\'' + ", Matching_template_id='" + this.matching_template_id + '\'' + '}';
+        return "ViberResponse{" + "seq=" + this.seq + ", message_token='" + this.message_token + '\'' + ", Matching_template_id='" + this.matching_template_id + '\'' + ", service_id"+this.session_id +'}';
     }
 }

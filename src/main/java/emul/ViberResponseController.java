@@ -124,7 +124,16 @@ public class ViberResponseController extends Thread {
                     new Thread(() -> viberStatusSend.send(viberResponse, phone, serviceId)).start();
                     logger.info(viberResponse.toString());
                     return viberResponse;
-                } else {
+                }
+                else if (newViberRequest.getType()==306||newViberRequest.getType()==307){
+                    viberResponse.setMatching_template_id(0);
+                    viberResponse.setSession_id(newViberRequest.getService_id());
+                    new Thread(() -> viberStatusSend.send(viberResponse, phone, serviceId)).start();
+                    logger.info(viberResponse.toString());
+                    return viberResponse;
+                }
+
+                else {
                     viberResponse.setMatching_template_id(0);
                     new Thread(() -> viberStatusSend.send(viberResponse, phone, serviceId)).start();
                     logger.info(viberResponse.toString());
