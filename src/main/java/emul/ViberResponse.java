@@ -1,23 +1,18 @@
+
 package emul;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-import org.springframework.web.util.UriComponentsBuilder;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Ivan Li
+ */
 @Entity
 class ViberResponse {
 
@@ -28,7 +23,7 @@ class ViberResponse {
     private String message_token;
     private Integer matching_template_id;
     private Integer status = 0;
-    private Integer session_id=0;
+    private Integer session_id = 0;
 
     public Integer getSession_id() {
         return session_id;
@@ -121,6 +116,6 @@ class ViberResponse {
 
     @Override
     public String toString() {
-        return "ViberResponse{" + "seq=" + this.seq + ", message_token='" + this.message_token + '\'' + ", Matching_template_id='" + this.matching_template_id + '\'' + ", service_id='" +'\'' +this.session_id +'}';
+        return "ViberResponse{" + "seq=" + this.seq + ", message_token='" + this.message_token + '\'' + ", Matching_template_id='" + this.matching_template_id + '\'' + ", service_id='" + '\'' + this.session_id + '}';
     }
 }

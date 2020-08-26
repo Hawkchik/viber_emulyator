@@ -1,5 +1,9 @@
+
 package emul;
 
+/**
+ * @author Ivan Li
+ */
 public class Message {
     private String action;
     private String caption;

@@ -1,7 +1,8 @@
+
 package emul;
-
-import java.util.Date;
-
+/**
+ * @author Ivan Li
+ */
 public class ViberStatus {
     private Integer message_status = 0;
     private String message_token;

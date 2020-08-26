@@ -1,5 +1,9 @@
+
 package emul;
 
+/**
+ * @author Ivan Li
+ */
 public class ViberRequest {
     private Integer service_id;
     private String dest;
@@ -9,6 +13,7 @@ public class ViberRequest {
     private String label;
     private Integer ttl;
     private String expiry_txt;
+
     public String getExpiry_txt() {
         return expiry_txt;
     }

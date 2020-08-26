@@ -1,3 +1,4 @@
+
 package emul;
 
 import org.slf4j.Logger;
@@ -6,6 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author Ivan Li
+ */
 @Configuration
 class Responses {
 
@@ -15,8 +19,8 @@ class Responses {
     CommandLineRunner initResponses(ViberResponseRepository repository) {
 
         return args -> {
-            log.info("Preloading " + repository.save(new ViberResponse("123",23)));
-            log.info("Preloading " + repository.save(new ViberResponse("1234",25)));
+            log.info("Preloading " + repository.save(new ViberResponse("123", 23)));
+            log.info("Preloading " + repository.save(new ViberResponse("1234", 25)));
         };
     }
 }

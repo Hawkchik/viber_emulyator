@@ -13,6 +13,9 @@ import java.util.Date;
 
 import static java.lang.Thread.sleep;
 
+/**
+ * @author Ivan Li
+ */
 @Service
 public class ViberStatusSend {
     private static Logger logger = LoggerFactory.getLogger(ViberStatusSend.class);
