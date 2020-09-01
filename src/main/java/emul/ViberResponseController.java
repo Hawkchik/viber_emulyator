@@ -123,7 +123,9 @@ public class ViberResponseController extends Thread {
             else if (phone.matches("\\d{9}45")) {
                 viberResponse.setStatus(21);
                 return viberResponse;
-            } else {
+            }
+            //Откроём новый поток, для того чтобы получить статусы отправки и доставки
+            else {
                 if (newViberRequest.getType() == 301) {
                     new Thread(() -> viberStatusSend.send(viberResponse, phone, serviceId)).start();
                     logger.info(viberResponse.toString());
