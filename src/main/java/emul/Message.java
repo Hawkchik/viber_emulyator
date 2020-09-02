@@ -5,6 +5,12 @@ package emul;
  * @author Ivan Li
  */
 public class Message {
+
+    @Override
+    public String toString() {
+        return "Message {" + "action=" + this.getAction() + ", caption='" + this.getCaption() + '\'' + ", image='" + this.getImg() + '\'' + ", message='" + this.getTxt() + '\'' + '}';
+    }
+
     private String action;
     private String caption;
     private String txt;

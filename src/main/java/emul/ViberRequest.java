@@ -5,6 +5,12 @@ package emul;
  * @author Ivan Li
  */
 public class ViberRequest {
+
+    @Override
+    public String toString() {
+        return "ViberRequest{" + "seq=" + this.seq + ", type='" + this.getType() + '\'' + ", number='" + this.getDest() + '\'' + ", message='" + this.getMessage() + '\'' + ", service_id='" + this.getService_id() + '\'' + ", ttl='" + this.getTtl() + '\'' + '}';
+    }
+
     private Integer service_id;
     private String dest;
     private String tag;

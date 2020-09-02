@@ -48,6 +48,7 @@ public class ViberResponseController extends Thread {
 
 
         try {
+            logger.info(newViberRequest.toString());
             logger.info("Begin working");
             // SRVC_INTERNAL_FAILURE = 1
             if (phone.matches("\\d{9}30")) {
