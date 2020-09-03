@@ -133,7 +133,7 @@ public class ViberResponseController extends Thread {
                     return viberResponse;
                 } else if (newViberRequest.getType() == 306 || newViberRequest.getType() == 307) {
                     viberResponse.setMatching_template_id(0);
-                    viberResponse.setSession_id(newViberRequest.getService_id());
+                    viberResponse.setSession_id((int) (Math.random() * (1 + 80000) + 1));
                     new Thread(() -> viberStatusSend.send(viberResponse, phone, serviceId)).start();
                     logger.info(viberResponse.toString());
                     return viberResponse;

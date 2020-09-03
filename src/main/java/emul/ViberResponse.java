@@ -116,6 +116,6 @@ class ViberResponse {
 
     @Override
     public String toString() {
-        return "ViberResponse{" + "seq=" + this.seq + ", message_token='" + this.message_token + '\'' + ", Matching_template_id='" + this.matching_template_id + '\'' + ", service_id='" + this.session_id + '\'' + '}';
+        return "ViberResponse{" + "seq=" + this.seq + ", message_token='" + this.message_token + '\'' + ", Matching_template_id='" + this.matching_template_id + '\'' + ", session_id='" + this.session_id + '\'' + '}';
     }
 }
